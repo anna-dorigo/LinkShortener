@@ -17,16 +17,14 @@ class Shortener
 	def lookup_code
 		i = 0
 		loop do
-			code = get_fresh_code(i)
+			code = get_fresh_code()
 			break code unless link_model.exists?(lookup_code: code)
-			i = i + 1
-			
 		end	
 	end
 
 	private
 
-	def get_fresh_code(i)
-		SecureRandom.uuid[i..(i + 6)]
+	def get_fresh_code()
+		SecureRandom.uuid[0..6]
 	end
 end
