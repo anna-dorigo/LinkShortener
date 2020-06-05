@@ -1,0 +1,37 @@
+<div class="container">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Original URL</th>
+	      <th scope="col">Shortened URL</th>
+	      <th scope="col">Status</th>
+	      <th scope="col">Change Status</th>
+	      <th scope="col">Delete</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% i = 0 %>
+
+		<% Link.find_each do |link| %>
+			<tr id=<%= link.id %>>
+	      		<th scope="row"><%= i %></th>
+	      		<td><%= link.original_url %></td>
+	      		<td><%= link.shortened_url %></td>
+	      		<td id="<%= "state_#{link.id}"%>">
+	      		<% if link.state %>
+	      			Active
+	      		<% else %>
+	      			InActive
+	      		<% end %>
+	      		</td>
+	      		<td><%= link_to 'Change State', { :controller => 'links', :action => 'change_state', :id => link.id },
+                      { :remote => true} %></td>
+	      		<td><%= link_to 'Delete', { :controller => 'links', :action => 'destroy', :id => link.id }, 
+                      { :confirm => 'Are you sure?', :method => :delete, :remote => true} %></td>
+	    	</tr>
+	    	<% i = i + 1 %>
+		<% end %>
+	  </tbody>
+	</table>
+</div>

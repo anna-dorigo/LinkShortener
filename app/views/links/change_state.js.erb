@@ -1,0 +1,10 @@
+
+
+var cellId = "state_"+<%= @link.id %>
+var cell = document.getElementById(cellId);
+
+<% if @link.state %>
+	cell.innerHTML = "Active";
+<% else %>
+	cell.innerHTML = "InActive";
+<% end %>
