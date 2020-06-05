@@ -2,7 +2,11 @@ class LinksController < ApplicationController
 
 	def redirect
 		link = Link.find_by(lookup_code: params[:lookup_code])
-		redirect_to link.original_url
+		if link.state
+			redirect_to link.original_url
+		else
+			render "page_inactive"
+		end
 	end
 
 	def create
@@ -18,7 +22,7 @@ class LinksController < ApplicationController
 	end
 
 	def display
-		puts "----------display!!!!! -------"
+		
 	end
 
 	def destroy
