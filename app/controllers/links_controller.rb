@@ -17,4 +17,8 @@ class LinksController < ApplicationController
 		end
 	end
 
+	def display
+		puts "----------display!!!!! -------"
+	end
+
 end
