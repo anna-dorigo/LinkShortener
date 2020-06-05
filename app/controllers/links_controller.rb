@@ -21,4 +21,24 @@ class LinksController < ApplicationController
 		puts "----------display!!!!! -------"
 	end
 
+	def destroy
+		@link = Link.find(params[:id])
+		@link.destroy
+		@id = params[:id]
+    	if !Link.exists?(params[:id])
+    		respond_to :js
+    	end
+	end
+
+	def change_state
+		@link = Link.find(params[:id])
+		if @link.state
+			@link.update_attribute(:state, false)
+		else
+			@link.update_attribute(:state, true)
+		end
+		respond_to :js
+
+	end
+
 end

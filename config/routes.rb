@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   get "/display" => "links#display"
   get "/s/:lookup_code" => "links#redirect"
+  get "/changeState/:id" => "links#change_state"
+
+  resources :links, only: [:create, :destroy]
 end
