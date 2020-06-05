@@ -1,3 +1,6 @@
 
-var element = document.getElementById('short-link');
-element.innerHTML = "<%= @link.shortened_url %>";
+var element = document.getElementById('message-center');
+
+var html = "<%= j render 'link', link: @link.shortened_url %>"
+
+element.innerHTML = html;
