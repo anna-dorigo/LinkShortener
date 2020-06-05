@@ -3,4 +3,10 @@ var element = document.getElementById('message-center');
 
 var html = "<%= j render 'link', link: @link.shortened_url %>"
 
+var messageHeader = document.getElementById('message-center-header');
+
+messageHeader.className = "card-header"
+
 element.innerHTML = html;
+
+element.className = "alert alert-success"

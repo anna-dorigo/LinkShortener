@@ -1,6 +1,12 @@
 var messages = "<%= @link.errors.full_messages.join(". ") << '.' %>";
 
 var element = document.getElementById('message-center');
+
+var messageHeader = document.getElementById('message-center-header');
+
+messageHeader.className = "card-header"
+
 element.innerHTML = messages;
 
+element.className = "alert alert-danger"
 
