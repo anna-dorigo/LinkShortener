@@ -2,6 +2,7 @@ class Link < ApplicationRecord
 	validates_presence_of :lookup_code, :original_url
 	validates_uniqueness_of :lookup_code
 	validate :original_url_format
+	validates :slug, uniqueness: true, allow_nil: true
 
 	def original_url_format
 		uri = URI.parse(original_url || "")
@@ -12,6 +13,10 @@ class Link < ApplicationRecord
 	end
 
 	def shortened_url
-		"http://localhost:3000/s/#{lookup_code}"
+		if slug.nil?
+			"http://localhost:3000/s/#{lookup_code}"
+		else
+			"http://localhost:3000/s/#{slug}"
+		end
 	end
 end

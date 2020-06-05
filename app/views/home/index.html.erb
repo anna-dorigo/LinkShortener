@@ -11,6 +11,9 @@
 				<%= form_for @link, remote: true do |form| %>
 					<h4 class='card-title'>Enter a URL to shorten</h4>
 					<%= form.text_field :original_url, class: "form-control" %>
+					<hr class="my-3"/>
+					<h5 class='card-title'>Enter Slug (optional)</h5>
+					<%= form.text_field :slug, class: "form-control" %>
 					<%= form.submit "Shorten", class: "btn btn-primary mt-3"%>
 				<% end %>
 			</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_045327) do
+ActiveRecord::Schema.define(version: 2020_06_05_075344) do
 
   create_table "links", force: :cascade do |t|
     t.string "lookup_code"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_045327) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "state", default: true
+    t.string "slug"
   end
 
 end
