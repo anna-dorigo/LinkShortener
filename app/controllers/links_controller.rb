@@ -1,5 +1,10 @@
 class LinksController < ApplicationController
 
+	def show
+		link = Link.find_by(lookup_code: params[:lookup_code])
+		redirect_to link.original_url
+	end
+
 	def create
 		original_url = params[:link][:original_url]
 		shortener = Shortener.new(original_url)
